@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIGURACION>
+    <ACCESO_REMOTO term="Acceso a la base de datos remota u origen">
+        <usuario_R>egconsgr_madai</usuario_R>
+        <clave_R>Ratones</clave_R>
+        <base_R>egconsgr_madai</base_R>
+        <host_R>egconsgroup.com</host_R>
+        <puerto_R>3306</puerto_R>
+    </ACCESO_REMOTO>
+    <ACCESO_LOCAL term="Acceso a la base de datos local o destino">
+        <usuario_L>almacen</usuario_L>
+        <clave_L>almacen</clave_L>
+        <base_L>almacen</base_L>
+        <host_L>localhost</host_L>
+        <puerto_L>3306</puerto_L>
+    </ACCESO_LOCAL>
+</CONFIGURACION>
