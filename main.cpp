@@ -23,7 +23,7 @@ void muestroAyuda();
 
 // Variables de entorno
 QString _accion="";
-QString _version="1.6.1";
+QString _version="1.6.2";
 
 
 
@@ -193,6 +193,7 @@ void muestroAyuda(){
     qDebug()<< "\t1.6.0 - Actualización a CFE";
     qDebug()<< "\t1.6.1 - Se corrige en el envio de CFE, string que pudieran tener saltos de linea.";
     qDebug()<< "\t      - Se corrige el grabado de los creditos, ya que no aparecian con deuda en el sistema.";
+    qDebug()<< "\t1.6.2 - 27/07/2018 - Se agrega como vendedor para comisionar por defecto a Giseel a pedido de Fernando Buero.";
 
     qDebug()<< "";
 }

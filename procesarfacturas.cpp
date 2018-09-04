@@ -284,7 +284,7 @@ bool ProcesarFacturas::guardarFactura(QString _id_factura,QString _fechaHora,QSt
             _codigoVendedorLiquidacion=ProcesarFacturas::retornoVendedorDeLiquidacion(_codigoLiquidacion);
 
             if(query.exec("insert INTO Documentos (codigoDocumento, codigoTipoDocumento, serieDocumento, codigoEstadoDocumento, codigoCliente, tipoCliente, codigoMonedaDocumento, fechaEmisionDocumento, precioTotalVenta,precioSubTotalVenta, precioIvaVenta, codigoLiquidacion, codigoVendedorComisiona, usuarioAlta,codigoVendedorLiquidacion,totalIva1,totalIva2,totalIva3,cotizacionMoneda,observaciones,numeroCuentaBancaria,codigoBanco,observacionesWeb,codigoFacturaWeb,esDocumentoWeb,direccionWeb,esDocumentoCFE) "
-                          "values('"+_codigoDocumento+"','2','"+_serieDocumento+"','P','"+_codigoCliente+"','1','2','"+QDate::currentDate().toString("yyyy-MM-dd")+"','0','0','0','"+_codigoLiquidacion+"','0','admin','"+_codigoVendedorLiquidacion+"','0','0','0','"+_cotizacionMoneda+"','','','','"+_observacionWeb+"','"+_id_factura+"','1','"+_direccionDeFacturaWeb+"','1')")){
+                          "values('"+_codigoDocumento+"','2','"+_serieDocumento+"','P','"+_codigoCliente+"','1','2','"+QDate::currentDate().toString("yyyy-MM-dd")+"','0','0','0','"+_codigoLiquidacion+"','GISEEL','admin','"+_codigoVendedorLiquidacion+"','0','0','0','"+_cotizacionMoneda+"','','','','"+_observacionWeb+"','"+_id_factura+"','1','"+_direccionDeFacturaWeb+"','1')")){
 
                 return true;
             }else{
