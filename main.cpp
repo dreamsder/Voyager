@@ -23,7 +23,7 @@ void muestroAyuda();
 
 // Variables de entorno
 QString _accion="";
-QString _version="1.6.2";
+QString _version="1.6.3";
 
 
 
@@ -171,6 +171,13 @@ int main(int argc, char *argv[])
 void muestroAyuda(){
 
 
+
+
+
+
+
+
+
     qDebug()<< "###################################################\n\tVoyager - Versión "+_version+"\n###################################################";
     qDebug()<< "\nFORMAS DE USO:";
     qDebug()<< "\n* Para ejecutar la aplicación, pase como parametro 'batch'.\n  Ejemplo: ./Voyager batch";
@@ -194,6 +201,17 @@ void muestroAyuda(){
     qDebug()<< "\t1.6.1 - Se corrige en el envio de CFE, string que pudieran tener saltos de linea.";
     qDebug()<< "\t      - Se corrige el grabado de los creditos, ya que no aparecian con deuda en el sistema.";
     qDebug()<< "\t1.6.2 - 27/07/2018 - Se agrega como vendedor para comisionar por defecto a Giseel a pedido de Fernando Buero.";
+    qDebug()<< "\t1.6.3 - 22/03/2019 - Se desagrega la cantidad de items en una factura, para que desde la web siempre vaya como una unidad en ligar de 2 o 3 o mas.";
 
     qDebug()<< "";
+
+
+
+
+
+
+
+
+
+
 }

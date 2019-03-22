@@ -425,6 +425,13 @@ QString ProcesarFacturas::retornoVendedorDeLiquidacion(QString _codigoLiquidacio
     }
 }
 
+
+
+
+
+
+
+
 bool ProcesarFacturas::guardarLineaDocumento(QString _codigoFactura) {
 
 
@@ -448,27 +455,34 @@ bool ProcesarFacturas::guardarLineaDocumento(QString _codigoFactura) {
             query.previous();
             while (query.next()){
 
-                double _precioTotalVenta = query.value(2).toDouble()*query.value(1).toDouble();
-                doc_precioTotalVenta+=_precioTotalVenta;
+                 int codigoIva=ProcesarFacturas::retornoCodigoIva(query.value(0).toString());
+                //Analizo las cantidades y grabo siempre cantidad 1
+                for (int var = 0; var < query.value(1).toInt(); var++) {
 
-                double _precioIvaArticulo= (_precioTotalVenta)-(_precioTotalVenta/ProcesarFacturas::retornoFactorMultiplicador(query.value(0).toString()));
-                doc_precioIvaVenta+=_precioIvaArticulo;
-                doc_precioSubTotalVenta+=_precioTotalVenta-_precioIvaArticulo;
+                    double _precioTotalVenta = query.value(2).toDouble();//*query.value(1).toDouble();
+                    doc_precioTotalVenta+=_precioTotalVenta;
 
-                int codigoIva=ProcesarFacturas::retornoCodigoIva(query.value(0).toString());
-                if(codigoIva==1){
-                    doc_totalIva1+=_precioIvaArticulo;
-                }else if(codigoIva==2){
-                    doc_totalIva2+=_precioIvaArticulo;
-                }else if(codigoIva==3){
-                    doc_totalIva3+=_precioIvaArticulo;
+                    double _precioIvaArticulo= (_precioTotalVenta)-(_precioTotalVenta/ProcesarFacturas::retornoFactorMultiplicador(query.value(0).toString()));
+                    doc_precioIvaVenta+=_precioIvaArticulo;
+                    doc_precioSubTotalVenta+=_precioTotalVenta-_precioIvaArticulo;
+
+
+                    if(codigoIva==1){
+                        doc_totalIva1+=_precioIvaArticulo;
+                    }else if(codigoIva==2){
+                        doc_totalIva2+=_precioIvaArticulo;
+                    }else if(codigoIva==3){
+                        doc_totalIva3+=_precioIvaArticulo;
+                    }
+
+                    queryInsertLocal.clear();
+                    queryInsertLocal.exec("insert INTO DocumentosLineas (codigoDocumento, codigoTipoDocumento, numeroLinea, codigoArticulo, codigoArticuloBarras, cantidad, precioTotalVenta, precioArticuloUnitario, precioIvaArticulo)"
+                                          "values('"+_codigoDocumento+"','2','"+QString::number(i)+"','"+query.value(0).toString()+"','','1','"+QString::number(_precioTotalVenta,'f',2)+"','"+query.value(2).toString()+"','"+QString::number(_precioIvaArticulo,'f',2)+"')");
+
+                    i++;
+
+
                 }
-
-                queryInsertLocal.clear();
-                queryInsertLocal.exec("insert INTO DocumentosLineas (codigoDocumento, codigoTipoDocumento, numeroLinea, codigoArticulo, codigoArticuloBarras, cantidad, precioTotalVenta, precioArticuloUnitario, precioIvaArticulo)"
-                                      "values('"+_codigoDocumento+"','2','"+QString::number(i)+"','"+query.value(0).toString()+"','','"+query.value(1).toString()+"','"+QString::number(_precioTotalVenta,'f',2)+"','"+query.value(2).toString()+"','"+QString::number(_precioIvaArticulo,'f',2)+"')");
-
-                i++;
             }
             return true;
         }else{
@@ -478,6 +492,13 @@ bool ProcesarFacturas::guardarLineaDocumento(QString _codigoFactura) {
         return false;
     }
 }
+
+
+
+
+
+
+
 
 double ProcesarFacturas::retornoFactorMultiplicador(QString _codigoArticulo) {
 
