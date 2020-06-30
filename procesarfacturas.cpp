@@ -10,11 +10,11 @@
 #include <QDebug>
 #include "QProcess"
 #include <Utilidades/configuracionxml.h>
-#include <QPrinter>
+/*#include <QPrinter>
 #include <QPaintDevice>
 #include <QPainter>
 #include <QFont>
-#include <QPrinterInfo>
+#include <QPrinterInfo>*/
 
 #include <curl/curl.h>
 
@@ -51,8 +51,8 @@ double doc_totalIva3;
 
 bool emitirDocumentoEnImpresora(QString );
 
-QRectF cuadro(double x, double y, double ancho, double alto, bool justifica);
-QRectF cuadroA4(double x, double y, double ancho, double alto, bool justifica);
+//QRectF cuadro(double x, double y, double ancho, double alto, bool justifica);
+//QRectF cuadroA4(double x, double y, double ancho, double alto, bool justifica);
 double centimetro;
 
 
@@ -820,7 +820,7 @@ bool emitirDocumentoEnImpresora(QString _codigoDocumentoDOC){
 
     //##################################################
     // Preparo los seteos de la impresora ##############
-    QPrinter printer;
+/*    QPrinter printer;
     printer.setPrinterName(QPrinterInfo::defaultPrinter().printerName());
     QPainter painter;
     printer.setOutputFormat(QPrinter::NativeFormat);
@@ -1125,7 +1125,7 @@ bool emitirDocumentoEnImpresora(QString _codigoDocumentoDOC){
         }
         painter.end();
     }
-
+*/
     return true;
 }
 
@@ -1137,7 +1137,7 @@ bool emitirDocumentoEnImpresora(QString _codigoDocumentoDOC){
 //################################################################################
 //######## Calcula en centimetros la posicion de los campos a imprimirse #########
 //################################################################################
-QRectF cuadro(double x, double y, double ancho, double alto,bool justifica=false){
+/*QRectF cuadro(double x, double y, double ancho, double alto,bool justifica=false){
 
     QRectF punto(x*centimetro,y*centimetro,ancho*centimetro,alto*centimetro);
     if(justifica){
@@ -1158,7 +1158,7 @@ QRectF cuadroA4(double x, double y, double ancho, double alto,bool justifica=fal
 
     }
     return punto;
-}
+}*/
 
 
 QString ProcesarFacturas::retornaValorConfiguracion(QString _codigoConfiguracion) {
@@ -1221,7 +1221,7 @@ QString ProcesarFacturas::retornaDescripcionArticulo(QString _codigoArticulo) {
     if(!Database::connect("local").isOpen()){
         if(!Database::connect("local").open()){
             Logs::loguear("ERROR: No hay conexion a la base de datos: "+ConfiguracionXml::getBaseLocal());
-            return false;
+            return "";
         }
     }
     QSqlQuery query(Database::connect("local"));

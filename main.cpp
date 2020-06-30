@@ -1,5 +1,5 @@
-#include <QApplication>
-#include <QCoreApplication>
+//#include <QApplication>
+//#include <QCoreApplication>
 #include <QTextStream>
 #include <QDebug>
 #include <QTextCodec>
@@ -23,7 +23,7 @@ void muestroAyuda();
 
 // Variables de entorno
 QString _accion="";
-QString _version="1.6.3";
+QString _version="1.6.4";
 
 
 
@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
             /// Chequeo que el horario de funcionamiento del cargador sea mayor a las 8:00 y menor a las 19:00 hs.
             if(QDateTime::currentDateTime().toString("HH").toInt() > 7 && QDateTime::currentDateTime().toString("HH").toInt() < 19){
 
-                QApplication app(argc, argv);
+                //QApplication app(argc, argv);
                 //QCoreApplication app(argc, argv);
                 Logs::loguear("");
                 Logs::loguear("");
@@ -202,6 +202,7 @@ void muestroAyuda(){
     qDebug()<< "\t      - Se corrige el grabado de los creditos, ya que no aparecian con deuda en el sistema.";
     qDebug()<< "\t1.6.2 - 27/07/2018 - Se agrega como vendedor para comisionar por defecto a Giseel a pedido de Fernando Buero.";
     qDebug()<< "\t1.6.3 - 22/03/2019 - Se desagrega la cantidad de items en una factura, para que desde la web siempre vaya como una unidad en ligar de 2 o 3 o mas.";
+    qDebug()<< "\t1.6.4 - 25/06/2020 - Se quita la gui y todas las librerias obsoletas para que no se corrompa cuando se cae la gui del sistema";
 
     qDebug()<< "";
 

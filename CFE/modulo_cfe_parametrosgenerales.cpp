@@ -24,7 +24,7 @@ En caso contrario, consulte <http://www.gnu.org/licenses/>.
 #include <QtSql>
 #include <QSqlQuery>
 #include <Utilidades/database.h>
-#include <QFileDialog>
+//#include <QFileDialog>
 #include <QDebug>
 #include <Utilidades/logs.h>
 #include <Utilidades/configuracionxml.h>

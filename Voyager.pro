@@ -2,10 +2,9 @@
 # Project created by QtCreator 2012-12-26T12:07:58
 # -------------------------------------------------
 
-
-QT       += core gui
+QT       -= gui
 QT       += network
-QT       += sql
+QT       += sql core
 
 
 
@@ -49,12 +48,15 @@ win32:DEFINES  += WIN32
 unix:DEFINES     += UNIX
 
 
-unix:INCLUDEPATH += "/opt/Khitomer/lib"
-unix:INCLUDEPATH += "/opt/Khitomer/lib/lib32"
-unix:INCLUDEPATH += "/opt/Khitomer/lib/lib64"
+#unix:INCLUDEPATH += "/opt/Khitomer/lib"
+#unix:INCLUDEPATH += "/opt/Khitomer/lib/lib32"
+#unix:INCLUDEPATH += "/opt/Khitomer/lib/lib64"
 
 
-unix:LIBS += -lBasicExcel -L"/opt/Khitomer/lib"  -lboost_system -lresolv -lpthread -lcurl  -lcrypt -lm -lcrypto
-unix32:LIBS += -lchilkat-9.5.0 -L"/opt/Khitomer/lib/lib32"  -lboost_system -lresolv -lpthread -lcurl   -lcrypt -lm -lcrypto
-unix64:LIBS += -lchilkat-9.5.0 -L"/opt/Khitomer/lib/lib64"  -lboost_system -lresolv -lpthread -lcurl   -lcrypt -lm -lcrypto
+#unix:LIBS += -lBasicExcel -L"/opt/Khitomer/lib"  -lboost_system -lresolv -lpthread -lcurl  -lcrypt -lm -lcrypto
+#unix32:LIBS += -lchilkat-9.5.0 -L"/opt/Khitomer/lib/lib32"  -lboost_system -lresolv -lpthread -lcurl   -lcrypt -lm -lcrypto
+#unix64:LIBS += -lchilkat-9.5.0 -L"/opt/Khitomer/lib/lib64"  -lboost_system -lresolv -lpthread -lcurl   -lcrypt -lm -lcrypto
 
+unix:LIBS +=   -lboost_system -lresolv -lpthread -lcurl  -lcrypt -lm -lcrypto
+unix32:LIBS += -lboost_system -lresolv -lpthread -lcurl  -lcrypt -lm -lcrypto
+unix64:LIBS += -lboost_system -lresolv -lpthread -lcurl  -lcrypt -lm -lcrypto
